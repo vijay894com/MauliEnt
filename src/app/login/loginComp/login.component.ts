@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, Inject, inject, RendererFactory2 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiCallMainService } from '../../services/api-call-main.service';
 import { ApiNamesService } from '../../services/api-names.service';
@@ -12,6 +12,10 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [HttpClientModule],
 })
 export class loginComp {
+  renderer: any;
+  constructor(private rendererFactory: RendererFactory2) {
+    this.renderer = rendererFactory.createRenderer(null, null);
+  }
   loginForm = new FormGroup(
     {
       firstName: new FormControl('vijay', Validators.required),
@@ -29,13 +33,6 @@ export class loginComp {
   onSubmit() {
     this.loginForm.markAllAsTouched();
     if (this.loginForm.valid) {
-      // this.apiSev.callApiPost(
-      //   {
-      //     fName: this.loginForm.controls.firstName.value!,
-      //     lName: this.loginForm.controls.lastName.value!,
-      //   },
-      //   this.apiNames.passwordApi
-      // );
       this.apiSev.callApiGetData(this.apiNames.passwordApi).then((response) => {
         console.log('type', typeof response);
         response == this.loginForm.controls.password.value

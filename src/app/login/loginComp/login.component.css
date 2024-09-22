@@ -57,3 +57,7 @@
   font-weight: 900;
   font-style: italic;
 }
+.loader {
+  background-image: url("/src/assets/demo_wait.gif");
+  background-color: orange;
+}

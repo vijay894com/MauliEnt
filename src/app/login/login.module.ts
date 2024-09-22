@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { loginComp } from './loginComp/login.component';
-import { AppRoutingModule } from '../app-routing.module';
 import { loginRoutingModule } from './login-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BillFormComponent } from './bill-form/bill-form.component';
@@ -12,6 +11,6 @@ import { StorageServiceService } from '../services/storage-service.service';
 @NgModule({
   declarations: [loginComp, BillFormComponent],
   imports: [CommonModule, loginRoutingModule, FormsModule, ReactiveFormsModule],
-  providers: [pdfService, billPdf,StorageServiceService],
+  providers: [pdfService, billPdf, StorageServiceService],
 })
 export class LoginModule {}
