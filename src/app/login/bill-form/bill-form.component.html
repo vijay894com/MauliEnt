@@ -88,7 +88,7 @@
       <div class="control" *ngFor="let l of labels; let i = index">
         <label for="">{{ labels[i] }}</label>
         <input
-          [type]="l == 'Date' ? 'date' : 'text'"
+          [type]="l === 'Date' ? 'date' : 'text'"
           class="form-control"
           [formControlName]="i"
           [name]="i"

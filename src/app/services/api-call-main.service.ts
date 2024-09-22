@@ -1,12 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import {
-  ElementRef,
-  Inject,
-  inject,
-  Injectable,
-  Renderer2,
-  RendererFactory2,
-} from '@angular/core';
+import { inject, Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
@@ -20,18 +13,17 @@ export class ApiCallMainService {
 
   domBody = document.querySelector('body')!;
   showLoaderDiv() {
-    let loader = this.renderer.createElement('div');
+    const loader = this.renderer.createElement('div');
     this.renderer.setAttribute(loader, 'class', 'loader');
     this.renderer.appendChild(this.domBody, loader);
   }
 
   hideLoaderDiv() {
-    let loaderTag = this.domBody.getElementsByClassName('loader');
+    const loaderTag = this.domBody.getElementsByClassName('loader');
     this.renderer.removeChild(this.domBody, loaderTag[0]);
   }
   //get api
-  callApiGetData(serv: string, doc?: any) {
-    console.log('doc:', doc);
+  callApiGetData(serv: string) {
     //show loader
     this.showLoaderDiv();
     return new Promise((resolve, reject) => {

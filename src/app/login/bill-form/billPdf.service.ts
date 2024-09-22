@@ -1,7 +1,5 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { pdfService } from '../../services/pdfServ.service';
-import { style } from '@angular/animations';
-import { Form, FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +8,9 @@ export class billPdf {
   today = new Date();
   constructor(private pdfService: pdfService) {}
   // static ;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   generatePdf(formInputs: any, dayData: Array<any>) {
-    let docDefination = {
+    const docDefination = {
       content: [
         //heading line
         {
@@ -190,8 +189,9 @@ export class billPdf {
       text: `Mauli Enterprises`,
     };
   }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   tableData(formInputs: any, dayData: Array<any>) {
-    let row = [
+    const row = [
       [
         { text: 'Sr.No:' },
         { text: 'Date:' },
@@ -222,11 +222,12 @@ export class billPdf {
 
     return row;
   }
-  createPdf(formInputs: FormGroup, dayData: Array<any>) {
-    debugger;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  createPdf(formInputs: any, dayData: Array<any>) {
     console.log('form inputs', formInputs);
     this.pdfService.generatePdf(this.generatePdf(formInputs, dayData));
   }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   todaysDate(date: any) {
     return `${date}`;
   }

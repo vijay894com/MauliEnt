@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BillFormInput } from '../interfaces/bill-form-input';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +11,7 @@ export class StorageServiceService {
     localStorage.setItem('formInputs', formInputs);
   }
 
-  getFormInputsStorage(): any {
+  getFormInputsStorage(): string | null {
     return localStorage.getItem('formInputs');
   }
 }

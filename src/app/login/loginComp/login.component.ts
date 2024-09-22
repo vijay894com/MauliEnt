@@ -1,4 +1,5 @@
-import { Component, Inject, inject, RendererFactory2 } from '@angular/core';
+/* eslint-disable @angular-eslint/component-class-suffix */
+import { Component, inject, Renderer2, RendererFactory2 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiCallMainService } from '../../services/api-call-main.service';
 import { ApiNamesService } from '../../services/api-names.service';
@@ -12,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [HttpClientModule],
 })
 export class loginComp {
-  renderer: any;
+  renderer: Renderer2;
   constructor(private rendererFactory: RendererFactory2) {
     this.renderer = rendererFactory.createRenderer(null, null);
   }

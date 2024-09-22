@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class pdfService {
   constructor() {}
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   pdfMake: any;
   async loadPdfMaker() {
     if (!this.pdfMake) {
@@ -14,6 +15,7 @@ export class pdfService {
       this.pdfMake.vfs = pdfFontsModuele.default.pdfMake.vfs;
     }
   }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async generatePdf(content: any): Promise<void> {
     await this.loadPdfMaker();
     this.pdfMake.createPdf(content).open();

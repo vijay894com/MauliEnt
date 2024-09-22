@@ -63,10 +63,11 @@ export class BillFormComponent implements OnInit {
   ngOnInit(): void {
     this.billFormInputs.controls.partyData.valueChanges
       .pipe(debounceTime(100))
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .subscribe((partyData: any) => {
         console.log('party data:', partyData);
         if (partyData && !this.hasBeenDisabled) {
-          for (const [key, control] of Object.entries(
+          for (const [key] of Object.entries(
             this.billFormInputs.controls
           )) {
             if (key !== 'dayData') this.billFormInputs.get(key)?.disable();
@@ -75,14 +76,14 @@ export class BillFormComponent implements OnInit {
         }
       });
   }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   everyDayData: any[] = [];
   addData() {
     console.log('date', this.billFormInputs.controls.dayData.controls);
     this.everyDayData.push([...this.billFormInputs.controls.dayData.value]);
 
     for (let i = 0; i < this.everyDayData.length; i++) {
-      debugger;
-      let [year, month, date] = this.everyDayData[i][0].split('-');
+      const [year, month, date] = this.everyDayData[i][0].split('-');
       if (year.length != 2) {
         this.everyDayData[i].shift();
         this.everyDayData[i].unshift(`${date}-${month}-${year}`);
@@ -93,10 +94,10 @@ export class BillFormComponent implements OnInit {
 
   //formInputs for localStorage
   saveFormInputs() {
-    let date= this.billFormInputs.controls.billDate.value!.split('-');
-    let newDate=`${date[2]}-${date[1]}-${date[0]}`
-    let formData: BillFormInput = {
-      companyName: this.billFormInputs.controls.companyName.value!!,
+    const date= this.billFormInputs.controls.billDate.value!.split('-');
+    const newDate=`${date[2]}-${date[1]}-${date[0]}`
+    const formData: BillFormInput = {
+      companyName: this.billFormInputs.controls.companyName.value!,
       ownerName: this.billFormInputs.controls.ownerName.value!,
       address: this.billFormInputs.controls.address.value!,
       billDate:newDate,
