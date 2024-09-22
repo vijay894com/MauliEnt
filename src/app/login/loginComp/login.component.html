@@ -1,0 +1,59 @@
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+</style>
+<form class="p-5" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <hr style="border-width: 10px" />
+  <h1 class="text-center text-warning lato-regular-italic">
+    Mauli Enterprises
+  </h1>
+  <hr style="border-width: 10px" />
+  <div class="form-group pb-3 lato-black-italic">
+    <label for="firstName">First Name</label>
+    <input
+      type="text"
+      name="firstName"
+      class="form-control"
+      formControlName="firstName"
+    />
+  </div>
+  <div class="text-danger pb-2">
+    @if(loginForm.controls.firstName.touched &&
+    loginForm.controls.firstName.invalid) { Please enter first name }
+  </div>
+  <div class="form-group pb-3 lato-black-italic">
+    <label for="lastName">Last Name</label>
+    <input
+      type="text"
+      class="form-control"
+      name="lastName"
+      formControlName="lastName"
+    />
+  </div>
+  <div class="text-danger pb-2">
+    @if(loginForm.controls.lastName.touched&&
+    loginForm.controls.lastName.invalid) {Please enter last name }
+  </div>
+  <div class="form-group pb-3 lato-black-italic">
+    <label for="password">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      name="password"
+      inputmode="numeric"
+      formControlName="password"
+    />
+  </div>
+  <div class="text-danger pb-2">
+    @if(loginForm.controls.password.touched &&
+    loginForm.controls.password.hasError('minlength')) { Maximum length is 6 }
+  </div>
+  <div class="text-danger pb-2">
+    @if(loginForm.controls.password.touched&&loginForm.controls.password.invalid)
+    { Please enter valid password }
+  </div>
+  <div class="form-group pb-2 lato-black-italic text-center">
+    <button class="btn btn-primary lato-black-italic" style="width: 130px">
+      Submit
+    </button>
+  </div>
+</form>
